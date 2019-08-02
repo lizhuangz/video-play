@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>播放视频</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="layui.css" rel="stylesheet">
+    <script th:src="layui.js"></script>
+</head>
+<div class="layui-row" style="margin-left: 10%; margin-right: 20%; margin-top: 30pt">
+    <div class="layui-col-md4">
+        <input type="text" id = "input1" name="title" required lay-verify="required" placeholder="请输入文件路径" autocomplete="off" class="layui-input">
+    </div>
+    <div class="layui-col-md1 layui-col-md-offset1">
+        <input type="text" id = "input2" name="title" required lay-verify="required" placeholder="显示个数" autocomplete="off" class="layui-input">
+    </div>
+    <div class="layui-col-md1 layui-col-md-offset1">
+        <button type="button" class="layui-btn layui-btn-primary" th:onclick="'javascript:queryList();'">确定</button>
+    </div>
+    <div class="layui-col-md1 layui-col-md-offset1">
+        <button type="button" class="layui-btn layui-btn-primary" th:onclick="'javascript:queryPre(' + ${cur} + ');'">上一页</button>
+    </div>
+    <div class="layui-col-md1 layui-col-md-offset1">
+        <button type="button" class="layui-btn layui-btn-primary" th:onclick="'javascript:queryNext(' + ${cur} + ');'">下一页</button>
+    </div>
+</div>
+<div class="layui-row" id = "test1" style="margin-left: 8%;">
+    <div class="layui-col-md4 layui-col-space30" th:each="movie:${movies}" style="margin-top: 30pt">
+        <img th:src="${movie?.url}"  height="300px"></img>
+        <div><p th:text="${movie?.name}"></p></div>
+    </div>
+</div>
+
+<script>
+    function queryList()
+    {
+        window.location.href = "?filepath=" + encodeURI(document.getElementById("input1").value) + "&number=" + encodeURI(document.getElementById("input2").value);
+    }
+    function queryPre(cur)
+    {
+        cur--;
+        window.location.href = "/page?cur=" + cur + "&filepath=" + encodeURI(document.getElementById("input1").value) + "&number=" + encodeURI(document.getElementById("input2").value);
+    }
+    function queryNext(cur)
+    {
+        cur++;
+        window.location.href = "/page?cur=" + cur + "&filepath=" + encodeURI(document.getElementById("input1").value) + "&number=" + encodeURI(document.getElementById("input2").value);
+    }
+    //    function pageList(curr, total) {
+    //
+    //    }
+
+</script>
+</body>
+</html>

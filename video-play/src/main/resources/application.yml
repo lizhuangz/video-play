@@ -1,0 +1,29 @@
+server:
+  port: 8080
+
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    check-template-location: true
+    suffix: .html
+    encoding: UTF-8
+    mode: LEGACYHTML5
+    cache: false
+
+  #devtools插件
+  devtools:
+    livereload:
+      enabled: true #是否支持livereload
+      port: 35729
+    restart:
+      enabled: true #是否支持热部署
+
+# 打印sql
+logging:
+  level:
+    cn.tycoding.mapper: DEBUG
+
+
+
+
+
