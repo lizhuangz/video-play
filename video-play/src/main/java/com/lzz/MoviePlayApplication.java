@@ -15,6 +15,7 @@ public class MoviePlayApplication extends SpringBootServletInitializer {
 	@Override//为了打包springboot项目
 	protected SpringApplicationBuilder configure(
 			SpringApplicationBuilder builder) {
+		System.out.println(1ss);
 		return builder.sources(this.getClass());
 	}
 }
