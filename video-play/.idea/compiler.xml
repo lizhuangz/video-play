@@ -9,5 +9,8 @@
         <module name="video-play" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="video-play" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>
